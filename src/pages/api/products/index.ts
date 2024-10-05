@@ -15,6 +15,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Respon
   switch (method) {
     case "GET":
       return controller.GET(req, res)
+    case "POST":
+      return controller.POST(req, res)
     default:
       break;
   }

@@ -9,7 +9,6 @@ const queryClient = new QueryClient({
     }
 })
 
-
 type ProvidersProps = {
     children: React.ReactNode
 }
