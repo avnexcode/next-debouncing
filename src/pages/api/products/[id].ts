@@ -11,7 +11,6 @@ type Response = {
 };
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<Response>) {
-    console.log(req.query)
     const { method } = req
     switch (method) {
         case "GET":

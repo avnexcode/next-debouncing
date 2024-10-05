@@ -3,7 +3,6 @@ import * as repository from "../repositories/product.repository"
 
 export const getAllProducts = async (search: string) => {
     const data = await repository.findAllProducts(search)
-    console.log({ service: data })
     return data
 }
 
