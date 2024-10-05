@@ -2,23 +2,20 @@ import { Product } from "@/types/product";
 import prisma from "../db";
 
 export const findAllProducts = async (search: string) => {
+    const fieldsToSearch = ['name', 'price'];
+
+    const searchConditions = fieldsToSearch.map((field) => ({
+        [field]: {
+            contains: search,
+            mode: 'insensitive'
+        }
+    }));
     return await prisma.product.findMany({
         where: {
-            OR: [
-                {
-                    name: {
-                        contains: search,
-                        mode: 'insensitive'
-                    }
-                },
-                {
-                    price: {
-                        equals: search ? undefined : search
-                    }
-                }
-            ]
+            OR: searchConditions
         },
         select: {
+            id: true,
             name: true,
             price: true,
         }
